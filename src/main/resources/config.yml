@@ -1,0 +1,42 @@
+##########################################
+# 2B4U AntiChunkBan Config v1 By lmpedro.#
+##########################################
+# Max Amount Per Chunk                   #
+##########################################
+Amount:
+
+  BannerAmountPerChunk: 256
+
+  TrappedChestAmountPerChunk: 256
+
+  FurnaceAmountPerChunk: 256
+
+  EnchantmentTableAmountPerChunk: 256
+
+  WallBannerAmountPerChunk: 256
+
+  WallSignAmountPerChunk: 256
+
+  HopperAmountPerChunk: 256
+
+  DropperAmountPerChunk: 256
+
+  DispenserAmountPerChunk: 256
+
+  BrewingStandAmountPerChunk: 256
+
+  BeaconAmountPerChunk: 256
+
+  SignPostAmountPerChunk: 256
+
+  EnderChestAmountPerChunk: 256
+
+  FlowerPotAmountPerChunk: 256
+
+#skulls include player heads
+  SkullAmountPerChunk: 256
+
+
+#My 1st Public Plugin
+#Used On 2B4U.co.uk
+#2Bad4U A 1.12.2 Anarchy Server

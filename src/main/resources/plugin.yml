@@ -1,0 +1,10 @@
+name: 2B4UAntiChunkBan
+version: ${project.version}
+main: me.lmpedro.antichunkban.Main
+authors: [ lmpedro ]
+description: 2B4UAntiChunkBan plugin. Stops Chunk Bans and fps lag by limiting the amount of certain tile entitys. useful for anarchy and plot servers etc. fully customize the amount
+website: 2b4u.co.uk
+commands:
+  2B4UAntiChunkBan:
+    description: Reloads the config file.
+    aliases: [ Reload, ReloadConfig ]
