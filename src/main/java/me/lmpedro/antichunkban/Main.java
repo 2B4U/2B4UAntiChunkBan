@@ -11,9 +11,10 @@ public final class Main
         extends JavaPlugin {
     public void onEnable() {
 
+        //bstats
         int pluginId = 10308;
-
         new Metrics(this, pluginId);
+        //Logic
         new AntiChunkBan(this);
 
         if (!this.getDataFolder().exists() || !(new File(this.getDataFolder(), "config.yml")).exists())

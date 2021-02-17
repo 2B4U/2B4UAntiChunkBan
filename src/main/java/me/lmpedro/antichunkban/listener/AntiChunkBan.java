@@ -1,15 +1,14 @@
 package me.lmpedro.antichunkban.listener;
 
-
 import me.lmpedro.antichunkban.Main;
 import me.lmpedro.antichunkban.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
+
 
 public class AntiChunkBan implements Listener {
 
@@ -23,116 +22,93 @@ public class AntiChunkBan implements Listener {
     @EventHandler
     public void chunkBanPlace(BlockPlaceEvent event) {
         Chunk chunk = event.getBlock().getChunk();
-        Block block = event.getBlock();
+        Material material = event.getBlock().getType();
 
-        try {
-            if (block.getType() == Material.STANDING_BANNER) {
-                if (Utils.countBlockPerChunk(chunk, Material.STANDING_BANNER) > plugin.getConfig().getInt("Amount.BannerAmountPerChunk")) {
+        switch (material) {
+            case STANDING_BANNER:
+                if (Utils.countBlockPerChunk(chunk, Material.STANDING_BANNER) > plugin.getConfig().getInt("Patches.BannerAmountPerChunk")) {
                     event.setCancelled(true);
-                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Amount.BannerAmountPerChunk") + " Banners In A Chunk."));
+                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Patches.BannerAmountPerChunk") + " Banners In A Chunk."));
                 }
-            }
-
-            if (block.getType() == Material.TRAPPED_CHEST) {
-                if (Utils.countBlockPerChunk(chunk, Material.TRAPPED_CHEST) > plugin.getConfig().getInt("Amount.TrappedChestAmountPerChunk")) {
+                break;
+            case FURNACE:
+                if (Utils.countBlockPerChunk(chunk, Material.FURNACE) > plugin.getConfig().getInt("Patches.FurnaceAmountPerChunk")) {
                     event.setCancelled(true);
-                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Amount.TrappedChestAmountPerChunk") + " Trapped Chests In A Chunk."));
+                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Patches.FurnaceAmountPerChunk") + " Furnaces In A Chunk."));
                 }
-            }
-
-            if (block.getType() == Material.FURNACE) {
-                if (Utils.countBlockPerChunk(chunk, Material.FURNACE) > plugin.getConfig().getInt("Amount.FurnaceAmountPerChunk")) {
+                break;
+            case ENCHANTMENT_TABLE:
+                if (Utils.countBlockPerChunk(chunk, Material.ENCHANTMENT_TABLE) > plugin.getConfig().getInt("Patches.EnchantmentTableAmountPerChunk")) {
                     event.setCancelled(true);
-                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Amount.FurnaceAmountPerChunk") + " Furnaces In A Chunk."));
+                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Patches.EnchantmentTableAmountPerChunk") + " Enchantment Tables In A Chunk."));
                 }
-            }
-
-            if (block.getType() == Material.ENCHANTMENT_TABLE) {
-                if (Utils.countBlockPerChunk(chunk, Material.ENCHANTMENT_TABLE) > plugin.getConfig().getInt("Amount.EnchantmentTableAmountPerChunk")) {
+                break;
+            case WALL_BANNER:
+                if (Utils.countBlockPerChunk(chunk, Material.WALL_BANNER) > plugin.getConfig().getInt("Patches.WallBannerAmountPerChunk")) {
                     event.setCancelled(true);
-                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Amount.EnchantmentTableAmountPerChunk") + " Enchantment Tables In A Chunk."));
+                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Patches.WallBannerAmountPerChunk") + " WallBanners In A Chunk."));
                 }
-            }
-
-            if (block.getType() == Material.WALL_BANNER) {
-                if (Utils.countBlockPerChunk(chunk, Material.WALL_BANNER) > plugin.getConfig().getInt("Amount.WallBannerAmountPerChunk")) {
+                break;
+            case WALL_SIGN:
+                if (Utils.countBlockPerChunk(chunk, Material.WALL_SIGN) > plugin.getConfig().getInt("Patches.WallSignAmountPerChunk")) {
                     event.setCancelled(true);
-                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Amount.WallBannerAmountPerChunk") + " WallBanners In A Chunk."));
+                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Patches.WallSignAmountPerChunk") + " WallSigns In A Chunk."));
                 }
-            }
-
-            if (block.getType() == Material.WALL_SIGN) {
-                if (Utils.countBlockPerChunk(chunk, Material.WALL_SIGN) > plugin.getConfig().getInt("Amount.WallSignAmountPerChunk")) {
+                break;
+            case HOPPER:
+                if (Utils.countBlockPerChunk(chunk, Material.HOPPER) > plugin.getConfig().getInt("Patches.HopperAmountPerChunk")) {
                     event.setCancelled(true);
-                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Amount.WallSignAmountPerChunk") + " WallSigns In A Chunk."));
+                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Patches.HopperAmountPerChunk") + " Hoppers In A Chunk."));
                 }
-            }
-
-            if (block.getType() == Material.HOPPER) {
-                if (Utils.countBlockPerChunk(chunk, Material.HOPPER) > plugin.getConfig().getInt("Amount.HopperAmountPerChunk")) {
+                break;
+            case DROPPER:
+                if (Utils.countBlockPerChunk(chunk, Material.DROPPER) > plugin.getConfig().getInt("Patches.DropperAmountPerChunk")) {
                     event.setCancelled(true);
-                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Amount.HopperAmountPerChunk") + " Hoppers In A Chunk."));
+                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Patches.DropperAmountPerChunk") + " Dropper In A Chunk."));
                 }
-            }
-
-            if (block.getType() == Material.DROPPER) {
-                if (Utils.countBlockPerChunk(chunk, Material.DROPPER) > plugin.getConfig().getInt("Amount.DropperAmountPerChunk")) {
+                break;
+            case DISPENSER:
+                if (Utils.countBlockPerChunk(chunk, Material.DISPENSER) > plugin.getConfig().getInt("Patches.DispenserAmountPerChunk")) {
                     event.setCancelled(true);
-                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Amount.DropperAmountPerChunk") + " Dropper In A Chunk."));
+                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Patches.DispenserAmountPerChunk") + " Dispensers In A Chunk."));
                 }
-            }
-
-            if (block.getType() == Material.DISPENSER) {
-                if (Utils.countBlockPerChunk(chunk, Material.DISPENSER) > plugin.getConfig().getInt("Amount.DispenserAmountPerChunk")) {
+                break;
+            case BREWING_STAND:
+                if (Utils.countBlockPerChunk(chunk, Material.BREWING_STAND) > plugin.getConfig().getInt("Patches.BrewingStandAmountPerChunk")) {
                     event.setCancelled(true);
-                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Amount.DispenserAmountPerChunk") + " Dispensers In A Chunk."));
+                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Patches.BrewingStandAmountPerChunk") + " Brewing Stands In A Chunk."));
                 }
-            }
-
-            if (block.getType() == Material.BREWING_STAND) {
-                if (Utils.countBlockPerChunk(chunk, Material.BREWING_STAND) > plugin.getConfig().getInt("Amount.BrewingStandAmountPerChunk")) {
+                break;
+            case BEACON:
+                if (Utils.countBlockPerChunk(chunk, Material.BEACON) > plugin.getConfig().getInt("Patches.BeaconAmountPerChunk")) {
                     event.setCancelled(true);
-                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Amount.BrewingStandAmountPerChunk") + " Brewing Stands In A Chunk."));
+                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Patches.BeaconAmountPerChunk") + " Beacons In A Chunk."));
                 }
-            }
-
-            if (block.getType() == Material.BEACON) {
-                if (Utils.countBlockPerChunk(chunk, Material.BEACON) > plugin.getConfig().getInt("Amount.BeaconAmountPerChunk")) {
+                break;
+            case SIGN_POST:
+                if (Utils.countBlockPerChunk(chunk, Material.SIGN_POST) > plugin.getConfig().getInt("Patches.SignPostAmountPerChunk")) {
                     event.setCancelled(true);
-                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Amount.BeaconAmountPerChunk") + " Beacons In A Chunk."));
+                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Patches.SignPostAmountPerChunk") + " Sign Posts In A Chunk."));
                 }
-            }
-
-            if (block.getType() == Material.SIGN_POST) {
-                if (Utils.countBlockPerChunk(chunk, Material.SIGN_POST) > plugin.getConfig().getInt("Amount.SignPostAmountPerChunk")) {
+                break;
+            case ENDER_CHEST:
+                if (Utils.countBlockPerChunk(chunk, Material.ENDER_CHEST) > plugin.getConfig().getInt("Patches.EnderChestAmountPerChunk")) {
                     event.setCancelled(true);
-                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Amount.SignPostAmountPerChunk") + " Sign Posts In A Chunk."));
+                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Patches.EnderChestAmountPerChunk") + " Ender Chests In A Chunk."));
                 }
-            }
-
-            if (block.getType() == Material.ENDER_CHEST) {
-                if (Utils.countBlockPerChunk(chunk, Material.ENDER_CHEST) > plugin.getConfig().getInt("Amount.EnderChestAmountPerChunk")) {
+                break;
+            case FLOWER_POT:
+                if (Utils.countBlockPerChunk(chunk, Material.FLOWER_POT) > plugin.getConfig().getInt("Patches.FlowerPotAmountPerChunk")) {
                     event.setCancelled(true);
-                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Amount.EnderChestAmountPerChunk") + " Ender Chests In A Chunk."));
+                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Patches.FlowerPotAmountPerChunk") + " Flower Pots In A Chunk."));
                 }
-            }
-
-            if (block.getType() == Material.FLOWER_POT) {
-                if (Utils.countBlockPerChunk(chunk, Material.FLOWER_POT) > plugin.getConfig().getInt("Amount.FlowerPotAmountPerChunk")) {
+                break;
+            case SKULL:
+                if (Utils.countBlockPerChunk(chunk, Material.SKULL) > plugin.getConfig().getInt("Patches.SkullAmountPerChunk")) {
                     event.setCancelled(true);
-                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Amount.FlowerPotAmountPerChunk") + " Flower Pots In A Chunk."));
+                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Patches.SkullAmountPerChunk") + " Skulls In A Chunk."));
                 }
-            }
-
-            if (block.getType() == Material.SKULL) {
-                if (Utils.countBlockPerChunk(chunk, Material.SKULL) > plugin.getConfig().getInt("Amount.SkullAmountPerChunk")) {
-                    event.setCancelled(true);
-                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Amount.SkullAmountPerChunk") + " Skulls In A Chunk."));
-                }
-            }
-
-        } catch (Error | Exception throwable) {
-            throwable.printStackTrace();
+                break;
         }
     }
 }
