@@ -10,7 +10,6 @@ import java.io.File;
 public final class Main
         extends JavaPlugin {
     public void onEnable() {
-
         //bstats
         int pluginId = 10308;
         new Metrics(this, pluginId);

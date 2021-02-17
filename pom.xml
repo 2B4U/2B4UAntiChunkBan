@@ -6,7 +6,7 @@
 
     <groupId>me.lmpedro.antichunkban</groupId>
     <artifactId>2B4UAntiChunkBan</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <packaging>jar</packaging>
 
     <name>2B4UAntiChunkBan</name>
