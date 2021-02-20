@@ -104,6 +104,18 @@ public class AntiChunkBan implements Listener {
                     event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Amount.FlowerPotAmountPerChunk") + " Flower Pots In A Chunk."));
                 }
                 break;
+            case TRAPPED_CHEST:
+                if (Utils.countBlockPerChunk(chunk, Material.TRAPPED_CHEST) > plugin.getConfig().getInt("Patches.TrappedChestAmountPerChunk")) {
+                    event.setCancelled(true);
+                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Patches.TrappedChestsAmountPerChunk") + " Trapped Chests In A Chunk."));
+                }
+                break;
+            case CHEST:
+                if (Utils.countBlockPerChunk(chunk, Material.CHEST) > plugin.getConfig().getInt("Patches.ChestAmountPerChunk")) {
+                    event.setCancelled(true);
+                    event.getPlayer().sendMessage(Utils.chat("&4You can only place " + plugin.getConfig().getInt("Patches.ChestsAmountPerChunk") + " Chests In A Chunk."));
+                }
+                break;
             case SKULL:
                 if (Utils.countBlockPerChunk(chunk, Material.SKULL) > plugin.getConfig().getInt("Amount.SkullAmountPerChunk")) {
                     event.setCancelled(true);
