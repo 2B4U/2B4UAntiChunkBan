@@ -9,6 +9,8 @@ Amount:
 
   TrappedChestAmountPerChunk: 256
 
+  ChestAmountPerChunk: 256
+
   FurnaceAmountPerChunk: 256
 
   EnchantmentTableAmountPerChunk: 256
